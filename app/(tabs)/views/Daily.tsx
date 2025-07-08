@@ -1,15 +1,16 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { Image, StatusBar, StyleSheet, Text, View } from "react-native";
 
 export default function Daily() {
   return (
     <View>
-      <StatusBar/>
+      <StatusBar />
       <View style={styles.baseHeader}>
-              <Text>Holua Dayli</Text>
+        <Image source={require('../../../assets/images/settings.png')}/>
       </View>
       <View>
-              <Text>Holua Dayli</Text>
-
+        <Text>Holua Dayli</Text>
+        <Text>Holua Dayli</Text>
+        <Text>Holua Dayli</Text>
       </View>
     </View>
   );
@@ -17,11 +18,10 @@ export default function Daily() {
 
 const styles = StyleSheet.create({
   baseHeader: {
-    flex: 1,
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    height: 24,
-    backgroundColor: '#e3e',
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    marginRight:10,
+    marginTop:10,
   },
   link: {
     marginTop: 15,

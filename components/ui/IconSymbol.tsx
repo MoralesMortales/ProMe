@@ -33,7 +33,7 @@ export function IconSymbol({
   style?: StyleProp<ImageStyle>;
 }) {
   const iconMap = {
-    'sun': require('@/assets/images/Sun.png'),
+    'plus': require('@/assets/images/Plus.png'),
     'feather': require('@/assets/images/Feather.png'),
     'bookOpen': require('@/assets/images/bookOpen.png'),
   };
