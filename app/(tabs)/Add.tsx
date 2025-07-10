@@ -6,7 +6,7 @@ export default function Add() {
   return (
     <View>
       <Text>Add</Text>
-      <Link href={"./index"}>a</Link>
+      <Link href={"/Diary"}>sa</Link>
     </View>
   )
 }
