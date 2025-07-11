@@ -4,56 +4,42 @@ import { icons } from "@/constants/icons";
 import { Image, StyleSheet, View } from "react-native";
 
 const themeColor = "#000";
+const activeThemeColor = "#999";
+
+const TabBarIcon = ({ focused, icon }: { focused: any; icon: any }) => (
+  <View style={styles.tabContainer}>
+    <Image
+      style={styles.tab}
+      source={icon}
+      tintColor={focused ? themeColor : activeThemeColor}
+    />
+  </View>
+);
 
 const _layout = () => {
   return (
-    <Tabs>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "home",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
-          ),
-        }}
-      />
+    <Tabs
+      screenOptions={{
+        tabBarShowLabel: false,
+      }}
+    >
       <Tabs.Screen
         name="Calendar"
         options={{
           title: "Calendar",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
+            <TabBarIcon focused={focused} icon={icons.Calendar} />
           ),
         }}
       />
-
       <Tabs.Screen
-        name="Daily"
+        name="index"
         options={{
           title: "Daily",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
+            <TabBarIcon focused={focused} icon={icons.Sun} />
           ),
         }}
       />
@@ -64,13 +50,7 @@ const _layout = () => {
           title: "Add",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
+            <TabBarIcon focused={focused} icon={icons.Plus} />
           ),
         }}
       />
@@ -81,13 +61,7 @@ const _layout = () => {
           title: "Diary",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
+            <TabBarIcon focused={focused} icon={icons.Book} />
           ),
         }}
       />
@@ -98,13 +72,7 @@ const _layout = () => {
           title: "Settings",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <View style={styles.tabContainer}>
-              <Image
-                style={styles.tab}
-                source={icons.Sun}
-                tintColor={themeColor}
-              />
-            </View>
+            <TabBarIcon focused={focused} icon={icons.Settings} />
           ),
         }}
       />
