@@ -1,7 +1,14 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import { icons } from "@/constants/icons";
-import { Image, StyleSheet, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackBase,
+  View,
+} from "react-native";
+import { Background } from "@react-navigation/elements";
 
 const themeColor = "#000";
 const activeThemeColor = "#999";
@@ -23,10 +30,15 @@ const _layout = () => {
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: dayTheme ? "#000" : "#fff",
-          borderColor:"transparent",
-          shadowColor:"transparent"
-        }
+          backgroundColor: "transparent",
+          borderColor: "transparent",
+          shadowColor: "transparent",
+        },
+        tabBarButton: (props) => (
+          <TouchableWithoutFeedback {...props}>
+            <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>{props.children}</View>
+          </TouchableWithoutFeedback>
+        ),
       }}
     >
       <Tabs.Screen
