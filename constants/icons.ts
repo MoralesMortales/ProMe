@@ -3,6 +3,7 @@ import Calendar from "@/assets/icons/Calendar.png";
 import Plus from "@/assets/icons/Plus.png";
 import Settings from "@/assets/icons/Settings.png";
 import Sun from "@/assets/icons/Sun.png";
+import User from "@/assets/icons/User.png";
 
 export const icons = {
   Book,
@@ -10,4 +11,5 @@ export const icons = {
   Plus,
   Sun,
   Settings,
+  User
 };

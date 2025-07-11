@@ -36,7 +36,15 @@ const _layout = () => {
         },
         tabBarButton: (props) => (
           <TouchableWithoutFeedback {...props}>
-            <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>{props.children}</View>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {props.children}
+            </View>
           </TouchableWithoutFeedback>
         ),
       }}
@@ -85,12 +93,12 @@ const _layout = () => {
       />
 
       <Tabs.Screen
-        name="Settings"
+        name="User"
         options={{
-          title: "Settings",
+          title: "User",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={icons.Settings} />
+            <TabBarIcon focused={focused} icon={icons.User} />
           ),
         }}
       />
