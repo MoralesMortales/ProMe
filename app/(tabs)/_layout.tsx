@@ -5,6 +5,7 @@ import { Image, StyleSheet, View } from "react-native";
 
 const themeColor = "#000";
 const activeThemeColor = "#999";
+const dayTheme = false;
 
 const TabBarIcon = ({ focused, icon }: { focused: any; icon: any }) => (
   <View style={styles.tabContainer}>
@@ -21,6 +22,11 @@ const _layout = () => {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: dayTheme ? "#000" : "#fff",
+          borderColor:"transparent",
+          shadowColor:"transparent"
+        }
       }}
     >
       <Tabs.Screen
