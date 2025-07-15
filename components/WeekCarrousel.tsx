@@ -1,3 +1,4 @@
+import { Config } from "@/constants/config";
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
@@ -88,17 +89,12 @@ const WeekCarrousel = () => {
   );
 };
 
-const themeColor = "#555";
-const activeThemeColor = "#888";
-const passiveThemeColor = "#aaa";
-const dark = false;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 6,
-    backgroundColor: themeColor,
+    backgroundColor: Config.themeColor,
     borderRadius:6,
   },
   dayContainer: {
@@ -113,16 +109,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   selectedDay: {
-    backgroundColor: activeThemeColor,
+    backgroundColor: Config.activeThemeColor,
   },
   dayName: {
-    color: dark ? themeColor : "#fff",
+    color: Config.dark ? "#fff" : Config.themeColor,
     fontSize: 13,
     fontWeight: "bold",
   },
   dayDate: {
-    color: dark ? themeColor : "#fff",
-    backgroundColor: passiveThemeColor,
+    color: Config.dark ? "#fff": Config.themeColor,
+    backgroundColor: Config.passiveThemeColor,
 paddingVertical: 5,
     paddingHorizontal: 7,
     borderRadius:90,

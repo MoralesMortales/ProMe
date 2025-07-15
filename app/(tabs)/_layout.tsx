@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     marginTop: 4,
+    marginBottom:19,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

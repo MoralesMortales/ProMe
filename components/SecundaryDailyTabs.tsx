@@ -1,32 +1,17 @@
-import {
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-
-import WeekCarrousel from "../../components/WeekCarrousel";
 import { useState } from "react";
-import { Config } from "@/constants/config";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-type MainTabType = "habits" | "tasks";
+type SecundaryTabType = "habits" | "tasks";
 
-export default function Index() {
-  const [selectedMainTab, setMainTab] = useState<MainTabType>("habits");
+const [selectedSecundaryTab, setSecundaryTab] = useState<SecundaryTabType>("habits");
 
-  return (
-    <View>
-      <StatusBar />
-      <Text style={styles.title}>My Tasks</Text>
-      <View>
-        <WeekCarrousel />
-      </View>
+const SecundaryDailyTabs = () => {
+  return ( 
       <View style={styles.mainTabsContainer}>
         <TouchableOpacity
           style={[
             styles.mainTabs,
-            selectedMainTab === "habits" && styles.selectedMainTab,
+            selectedSecundaryTab === "habits" && styles.selectedMainTab,
           ]}
           onPress={() => setMainTab("habits")}
         >
@@ -35,31 +20,24 @@ export default function Index() {
         <TouchableOpacity
           style={[
             styles.mainTabs,
-            selectedMainTab === "tasks" && styles.selectedMainTab,
+            selectedSecundaryTab === "tasks" && styles.selectedMainTab,
           ]}
           onPress={() => setMainTab("tasks")}
         >
           <Text style={styles.mainTabText}>Task</Text>
         </TouchableOpacity>
       </View>
-    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 20,
-    marginLeft: 7,
-    fontSize: 25,
-    marginBottom: 20,
-  },
   mainTabsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
   },
   mainTabs: {
-    backgroundColor: Config.activeThemeColor,
+    backgroundColor: activeThemeColor,
     paddingVertical: 2,
     width: "45%",
     justifyContent: "center",
@@ -67,9 +45,10 @@ const styles = StyleSheet.create({
     borderRadius: 90,
   },
   selectedMainTab: {
-    backgroundColor: Config.themeColor,
+    backgroundColor: themeColor,
   },
   mainTabText: {
-    color: Config.dark ? "#eee" : "#000",
+    color: dark ? "#eee" : "#000",
   },
 });
+
