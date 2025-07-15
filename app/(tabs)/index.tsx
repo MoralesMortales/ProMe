@@ -9,7 +9,7 @@ import {
 import WeekCarrousel from "../../components/WeekCarrousel";
 import { useState } from "react";
 import { Config } from "@/constants/config";
-
+import { SecundaryDailyTabs } from "@/components/SecundaryDailyTabs";
 type MainTabType = "habits" | "tasks";
 
 export default function Index() {
@@ -41,6 +41,10 @@ export default function Index() {
         >
           <Text style={styles.mainTabText}>Task</Text>
         </TouchableOpacity>
+      </View>
+
+      <View>
+        <SecundaryDailyTabs />
       </View>
     </View>
   );

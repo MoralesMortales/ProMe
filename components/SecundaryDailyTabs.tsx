@@ -1,54 +1,99 @@
+import { Config } from "@/constants/config";
 import { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-type SecundaryTabType = "habits" | "tasks";
+type SecundaryTabType = "habits" | "tasks" | "+";
 
-const [selectedSecundaryTab, setSecundaryTab] = useState<SecundaryTabType>("habits");
+export const SecundaryDailyTabs = () => {
+  const [selectedSecundaryTab, setSecundaryTab] =
+    useState<SecundaryTabType>("habits");
 
-const SecundaryDailyTabs = () => {
-  return ( 
-      <View style={styles.mainTabsContainer}>
+  return (
+    <View style={styles.secundaryTabsContainer}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
         <TouchableOpacity
           style={[
-            styles.mainTabs,
-            selectedSecundaryTab === "habits" && styles.selectedMainTab,
+            styles.secundaryTabs,
+            selectedSecundaryTab === "habits" && styles.selectedSecundaryTab,
           ]}
-          onPress={() => setMainTab("habits")}
+          onPress={() => setSecundaryTab("habits")}
         >
-          <Text style={styles.mainTabText}>Habits</Text>
+          <Text style={styles.secundaryTabText}>All</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[
+            styles.secundaryTabs,
+            selectedSecundaryTab === "tasks" && styles.selectedSecundaryTab,
+          ]}
+          onPress={() => setSecundaryTab("tasks")}
+        >
+          <Text style={styles.secundaryTabText}>Task</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
-            styles.mainTabs,
-            selectedSecundaryTab === "tasks" && styles.selectedMainTab,
+            styles.secundaryTabsPlus,
+            selectedSecundaryTab === "+" && styles.selectedSecundaryTab,
           ]}
-          onPress={() => setMainTab("tasks")}
+          onPress={() => setSecundaryTab("+")}
         >
-          <Text style={styles.mainTabText}>Task</Text>
+          <Text style={styles.secundaryTabTextPlus}>+</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  mainTabsContainer: {
+  secundaryTabsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
   },
-  mainTabs: {
-    backgroundColor: activeThemeColor,
+  secundaryTabsPlus: {
+    backgroundColor: Config.activeThemeColor,
+    width: 30,
+    justifyContent: "center",
+    alignContent: "center",
+    borderRadius: 90,
+  },
+  secundaryTabTextPlus: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    color: Config.dark ? "#eee" : "#000",
+    fontSize: 12,
+  },
+  secundaryTabs: {
+    backgroundColor: Config.activeThemeColor,
     paddingVertical: 2,
-    width: "45%",
+    width: 120,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 90,
+    marginRight: 15,
   },
-  selectedMainTab: {
-    backgroundColor: themeColor,
+  selectedSecundaryTab: {
+    backgroundColor: Config.themeColor,
   },
-  mainTabText: {
-    color: dark ? "#eee" : "#000",
+  scrollContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    gap: 10,
+  },
+  secundaryTabText: {
+    color: Config.dark ? "#eee" : "#000",
+    fontSize: 9,
   },
 });
-
