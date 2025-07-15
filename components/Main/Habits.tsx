@@ -1,9 +1,19 @@
 import { useState } from "react";
-import { Alert, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { icons } from "@/constants/icons";
+import { Config } from "@/constants/config";
 
 export const Habit = () => {
   const [isHolding, setIsHolding] = useState(false);
+  let [quantity, setQuantity] = useState(0);
   let holdTimer = null; // Referencia al temporizador
 
   const startHold = () => {
@@ -21,6 +31,20 @@ export const Habit = () => {
     setIsHolding(false);
   };
 
+const setQuantityFnt = (type) => {
+    switch (type) {
+      case "+":
+       setQuantity(quantity + 1); 
+        break;
+
+        case "-":
+        if (quantity > 0) {
+               setQuantity(quantity - 1); 
+        }
+      break
+    }
+  }
+
   return (
     <View style={styles.outerContainer}>
       <Pressable
@@ -31,15 +55,29 @@ export const Habit = () => {
         <Image
           source={require("@/assets/images/icon.png")}
           style={styles.leftIcon}
-        ></Image>
-        <Text style={ styles.title }>
-          Cocinar
-        </Text>
-        <Text style={ styles.title }>
-          8:30 AM
-        </Text>
-        <Image source={icons.Plus}></Image>
+        />
 
+        <Text style={styles.title} numberOfLines={1}>
+          Cocinar Comida
+        </Text>
+        <Text style={styles.complement}>{quantity}</Text>
+
+        <View style={styles.icons}>
+          <TouchableOpacity
+            onPress={() => {
+              setQuantityFnt("-");
+            }}
+            style={quantity === 0 && styles.notAvailableBtn}
+          >
+            <Image source={icons.Minus} tintColor={Config.themeColor} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+              setQuantityFnt("+");
+            }}
+>
+            <Image source={icons.Plus} tintColor={Config.themeColor} />
+          </TouchableOpacity>
+        </View>
       </Pressable>
     </View>
   );
@@ -47,26 +85,40 @@ export const Habit = () => {
 
 const styles = StyleSheet.create({
   outerContainer: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
   container: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: 20, 
-    backgroundColor: "#eee",
-    borderRadius: 8, 
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 30,
   },
   leftIcon: {
-    width: 40,
+    width: "15%",
     height: 40,
-    resizeMode: "contain", 
-    marginRight: 10, 
+    resizeMode: "contain",
+    borderRadius: 90,
+    marginRight: 10,
+  },
+  notAvailableBtn:{
+   opacity:0.3 
   },
   title: {
-    flex: 1, 
     fontSize: 16,
     color: "#000",
+    width: "45%",
+    textOverflow: "Ellipsis",
+  },
+  complement: {
+    width: "20%",
+    fontSize: 13,
+    color: "#000",
+    textAlign: "center",
+  },
+  icons: {
+    flexDirection: "row",
+    width: "20%",
   },
 });
