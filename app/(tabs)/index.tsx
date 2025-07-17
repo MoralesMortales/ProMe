@@ -1,72 +1,37 @@
-import {
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 
-import WeekCarrousel from "../../components/WeekCarrousel";
-import { useState } from "react";
 import { Config } from "@/constants/config";
-import { SecundaryDailyTabs } from "@/components/SecundaryDailyTabs";
-import { HabitQuantity } from "@/components/Main/HabitQuantity";
-type MainTabType = "habits" | "tasks";
+import WeekCarrousel from "@/components/Daily/WeekCarrousel";
+import PrimaryDailyTabs from "@/components/Daily/PrimaryDailyTabs";
+import { SecundaryDailyTabs } from "@/components/Daily/SecundaryDailyTabs";
+import { useState } from "react";
+import HabitsComponent from "@/components/Daily/HabitsComponent";
 
 export default function Index() {
-  const [selectedMainTab, setMainTab] = useState<MainTabType>("habits");
+  const [selectedMainTab, setSelectedMainTab] = useState<"Habits" | "Tasks">(
+    "Habits",
+  );
+
+  function showMainTab() {
+    if (selectedMainTab === "Habits") {
+      return <HabitsComponent />;
+    }
+  }
 
   return (
     <View>
       <StatusBar />
+
       <Text style={styles.title}>My Tasks</Text>
-      <View>
-        <WeekCarrousel />
-      </View>
-      <View style={styles.mainTabsContainer}>
-        <TouchableOpacity
-          style={[
-            styles.mainTabs,
-            selectedMainTab === "habits" && styles.selectedMainTab,
-          ]}
-          onPress={() => setMainTab("habits")}
-        >
-          <Text style={styles.mainTabText}>Habits</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.mainTabs,
-            selectedMainTab === "tasks" && styles.selectedMainTab,
-          ]}
-          onPress={() => setMainTab("tasks")}
-        >
-          <Text style={styles.mainTabText}>Task</Text>
-        </TouchableOpacity>
-      </View>
 
-      <View>
-        <SecundaryDailyTabs />
-      </View>
+      <WeekCarrousel />
 
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-      >
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-      </ScrollView>
+      <PrimaryDailyTabs
+        selectedMainTab={selectedMainTab}
+        onTabChange={setSelectedMainTab}
+      />
+
+      {showMainTab()}
     </View>
   );
 }

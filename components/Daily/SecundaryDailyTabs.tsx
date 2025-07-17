@@ -12,14 +12,15 @@ type SecundaryTabType = string;
 
 export const SecundaryDailyTabs = () => {
   const [tabs, setTabs] = useState<SecundaryTabType[]>(["All"]);
-  const [selectedSecundaryTab, setSecundaryTab] = useState<SecundaryTabType>("All");
+  const [selectedSecundaryTab, setSecundaryTab] =
+    useState<SecundaryTabType>("All");
   const [newTabCount, setNewTabCount] = useState(1);
 
   const addNewTab = () => {
     const newTabName = `NewTab${newTabCount}`;
     setTabs([...tabs, newTabName]);
     setNewTabCount(newTabCount + 1);
-    setSecundaryTab(newTabName); 
+    setSecundaryTab(newTabName);
   };
 
   return (
@@ -38,12 +39,10 @@ export const SecundaryDailyTabs = () => {
             ]}
             onPress={() => setSecundaryTab(tab)}
           >
-
             <Text style={styles.secundaryTabText}>{tab}</Text>
-
           </TouchableOpacity>
         ))}
-        
+
         <TouchableOpacity
           style={[
             styles.secundaryTabsPlus,
