@@ -11,7 +11,7 @@ import {
 import { icons } from "@/constants/icons";
 import { Config } from "@/constants/config";
 
-export const Habit = () => {
+export const HabitQuantity = () => {
   const [isHolding, setIsHolding] = useState(false);
   let [quantity, setQuantity] = useState(0);
   let holdTimer = null; // Referencia al temporizador
@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   leftIcon: {
-    width: "15%",
-    height: 40,
+    width: 35,
+    height: 35,
     resizeMode: "contain",
     borderRadius: 90,
     marginRight: 10,

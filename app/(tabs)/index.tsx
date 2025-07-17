@@ -1,4 +1,5 @@
 import {
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -10,7 +11,7 @@ import WeekCarrousel from "../../components/WeekCarrousel";
 import { useState } from "react";
 import { Config } from "@/constants/config";
 import { SecundaryDailyTabs } from "@/components/SecundaryDailyTabs";
-import { Habit } from "@/components/Main/Habits";
+import { HabitQuantity } from "@/components/Main/HabitQuantity";
 type MainTabType = "habits" | "tasks";
 
 export default function Index() {
@@ -48,9 +49,24 @@ export default function Index() {
         <SecundaryDailyTabs />
       </View>
 
-      <View>
-<Habit/>
-      </View>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+      </ScrollView>
     </View>
   );
 }
@@ -66,6 +82,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
+  },
+  scrollView: {
+    height: "60%",
+  },
+  scrollContent: {
+    paddingBottom: 37,
   },
   mainTabs: {
     backgroundColor: Config.activeThemeColor,
