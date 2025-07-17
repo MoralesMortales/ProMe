@@ -8,11 +8,20 @@ import {
   View,
 } from "react-native";
 
-type SecundaryTabType = "habits" | "tasks" | "+";
+type SecundaryTabType = string;
 
 export const SecundaryDailyTabs = () => {
+  const [tabs, setTabs] = useState<SecundaryTabType[]>(["All"]);
   const [selectedSecundaryTab, setSecundaryTab] =
-    useState<SecundaryTabType>("habits");
+    useState<SecundaryTabType>("All");
+  const [newTabCount, setNewTabCount] = useState(1);
+
+  const addNewTab = () => {
+    const newTabName = `NewTab${newTabCount}`;
+    setTabs([...tabs, newTabName]);
+    setNewTabCount(newTabCount + 1);
+    setSecundaryTab(newTabName);
+  };
 
   return (
     <View style={styles.secundaryTabsContainer}>
@@ -21,31 +30,25 @@ export const SecundaryDailyTabs = () => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        <TouchableOpacity
-          style={[
-            styles.secundaryTabs,
-            selectedSecundaryTab === "habits" && styles.selectedSecundaryTab,
-          ]}
-          onPress={() => setSecundaryTab("habits")}
-        >
-          <Text style={styles.secundaryTabText}>All</Text>
-        </TouchableOpacity>
+        {tabs.map((tab) => (
+          <TouchableOpacity
+            key={tab}
+            style={[
+              styles.secundaryTabs,
+              selectedSecundaryTab === tab && styles.selectedSecundaryTab,
+            ]}
+            onPress={() => setSecundaryTab(tab)}
+          >
+            <Text style={styles.secundaryTabText}>{tab}</Text>
+          </TouchableOpacity>
+        ))}
 
-        <TouchableOpacity
-          style={[
-            styles.secundaryTabs,
-            selectedSecundaryTab === "tasks" && styles.selectedSecundaryTab,
-          ]}
-          onPress={() => setSecundaryTab("tasks")}
-        >
-          <Text style={styles.secundaryTabText}>Task</Text>
-        </TouchableOpacity>
         <TouchableOpacity
           style={[
             styles.secundaryTabsPlus,
             selectedSecundaryTab === "+" && styles.selectedSecundaryTab,
           ]}
-          onPress={() => setSecundaryTab("+")}
+          onPress={addNewTab}
         >
           <Text style={styles.secundaryTabTextPlus}>+</Text>
         </TouchableOpacity>
@@ -53,7 +56,6 @@ export const SecundaryDailyTabs = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   secundaryTabsContainer: {
     flexDirection: "row",
