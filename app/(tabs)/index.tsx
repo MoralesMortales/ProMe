@@ -1,10 +1,10 @@
 import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
 
 import { Config } from "@/constants/config";
+
 import WeekCarrousel from "@/components/Daily/WeekCarrousel";
 import PrimaryDailyTabs from "@/components/Daily/PrimaryDailyTabs";
-import { SecundaryDailyTabs } from "@/components/Daily/SecundaryDailyTabs";
-import { useState } from "react";
 import HabitsComponent from "@/components/Daily/HabitsComponent";
 
 export default function Index() {
