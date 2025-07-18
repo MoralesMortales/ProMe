@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { HabitQuantity } from "./HabitQuantity";
+import { HabitHourly } from "./HabitHourly";
 import { SecundaryDailyTabs } from "./SecundaryDailyTabs";
 
 export default function HabitsComponent() {
@@ -13,6 +14,7 @@ export default function HabitsComponent() {
         contentContainerStyle={styles.scrollContent}
       >
         <HabitQuantity />
+        <HabitHourly />
         <HabitQuantity />
         <HabitQuantity />
         <HabitQuantity />
