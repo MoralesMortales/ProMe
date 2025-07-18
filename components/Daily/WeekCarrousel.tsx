@@ -1,11 +1,23 @@
 import { Config } from "@/constants/config";
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 
 const WeekCarrousel = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weekDays, setWeekDays] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
+
+  const scrollViewRef = useRef(null);
+
+  const { width } = Dimensions.get("window");
+  const itemWidth = width / 7;
 
   // Generate week days with dates
   const generateWeekDays = (date: any) => {
@@ -22,11 +34,11 @@ const WeekCarrousel = () => {
 
     // Find the most recent Monday (or Sunday if you prefer)
     const monday = new Date(date);
-    monday.setDate(date.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+    monday.setDate(date.getDate() - 7);
 
     const weekDaysArray = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 21; i++) {
       const dayDate = new Date(monday);
       dayDate.setDate(monday.getDate() + i);
 
@@ -35,6 +47,7 @@ const WeekCarrousel = () => {
         date: dayDate.getDate(),
         month: dayDate.getMonth(),
         fullDate: dayDate,
+        isToday: dayDate.toDateString() === new Date().toDateString(),
       });
     }
 
@@ -52,6 +65,13 @@ const WeekCarrousel = () => {
     );
     if (todayIndex !== -1) {
       setSelectedDay(todayIndex);
+
+      setTimeout(() => {
+        scrollViewRef.current?.scrollTo({
+          x: todayIndex * itemWidth - (width / 2 - itemWidth / 2),
+          animated: true,
+        });
+      }, 100);
     }
   }, [currentDate]);
 
@@ -72,19 +92,34 @@ const WeekCarrousel = () => {
 
   return (
     <View style={styles.container}>
-      {weekDays.map((day, index) => (
-        <TouchableOpacity
-          key={index}
-          style={[
-            styles.dayContainer,
-            selectedDay === index && styles.selectedDay,
-          ]}
-          onPress={() => setSelectedDay(index)}
-        >
-          <Text style={styles.dayName}>{day.name}</Text>
-          <Text style={styles.dayDate}>{day.date}</Text>
-        </TouchableOpacity>
-      ))}
+      <ScrollView
+        ref={scrollViewRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={itemWidth}
+        decelerationRate={"fast"}
+      >
+        {weekDays.map((day, index) => (
+          <TouchableOpacity
+            key={index}
+            style={[
+              { width: itemWidth },
+            ]}
+            onPress={() => setSelectedDay(index)}
+          >
+            <View style={[
+              styles.dayContainer,
+              selectedDay === index && styles.selectedDay,
+              { width: itemWidth },
+              day.isToday && !(selectedDay === index) && styles.todayIndicator,
+            ]}
+>
+              <Text style={styles.dayName}>{day.name}</Text>
+              <Text style={styles.dayDate}>{day.date}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -95,21 +130,25 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     paddingVertical: 6,
     backgroundColor: Config.themeColor,
-    borderRadius:6,
+    borderRadius: 6,
   },
   dayContainer: {
     alignItems: "center",
-    flexDirection:"column-reverse",
+    flexDirection: "column-reverse",
     paddingTop: 6,
-    paddingBottom:4,
-    paddingHorizontal: 6,
-    borderTopLeftRadius:90,
-    borderTopRightRadius:90,
-    gap:5,
+    paddingBottom: 4,
+    paddingHorizontal: 2,
+    gap: 5,
     borderRadius: 10,
+            borderTopLeftRadius: 90,
+    borderTopRightRadius: 90,
   },
   selectedDay: {
     backgroundColor: Config.activeThemeColor,
+    maxWidth:"80%",
+    marginHorizontal:"auto",
+        borderTopLeftRadius: 90,
+    borderTopRightRadius: 90,
   },
   dayName: {
     color: Config.dark ? "#fff" : Config.themeColor,
@@ -117,15 +156,24 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   dayDate: {
-    color: Config.dark ? "#fff": Config.themeColor,
+    color: Config.dark ? "#fff" : Config.themeColor,
     backgroundColor: Config.passiveThemeColor,
-paddingVertical: 5,
+    paddingVertical: 5,
     paddingHorizontal: 7,
-    borderRadius:90,
+    borderRadius: 90,
     fontSize: 16,
   },
   selectedDayText: {
     color: "#fff",
+  },
+  todayIndicator: {
+    outlineWidth: 1.5,
+    outlineOffset:-1,
+    outlineColor: Config.activeThemeColor,
+    maxWidth:"80%",
+    marginHorizontal:"auto",
+        borderTopLeftRadius: 90,
+    borderTopRightRadius: 90,
   },
 });
 
