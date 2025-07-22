@@ -7,7 +7,7 @@ import { SecundaryDailyTabs } from "./SecundaryDailyTabs";
 export default function HabitsComponent() {
   return (
     <View>
-      <SecundaryDailyTabs />
+      <SecundaryDailyTabs componentUsing="Habits"/>
 
       <ScrollView
         style={styles.scrollView}

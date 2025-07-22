@@ -12,7 +12,7 @@ export default function Index() {
     "Habits",
   );
 
-  function showMainTab() {
+  function showSelectedTab() {
     if (selectedMainTab === "Habits") {
       return <HabitsComponent />;
     }
@@ -31,7 +31,7 @@ export default function Index() {
         onTabChange={setSelectedMainTab}
       />
 
-      {showMainTab()}
+      {showSelectedTab()}
     </View>
   );
 }
