@@ -6,6 +6,7 @@ import { Config } from "@/constants/config";
 import WeekCarrousel from "@/components/Daily/WeekCarrousel";
 import PrimaryDailyTabs from "@/components/Daily/PrimaryDailyTabs";
 import HabitsComponent from "@/components/Daily/HabitsComponent";
+import TasksComponent from "@/components/Daily/TasksComponent";
 
 export default function Index() {
   const [selectedMainTab, setSelectedMainTab] = useState<"Habits" | "Tasks">(
@@ -15,6 +16,9 @@ export default function Index() {
   function showSelectedTab() {
     if (selectedMainTab === "Habits") {
       return <HabitsComponent />;
+    } 
+    else if (selectedMainTab === "Tasks") {
+      return <TasksComponent />;
     }
   }
 
