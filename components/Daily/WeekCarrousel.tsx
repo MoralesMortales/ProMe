@@ -160,6 +160,8 @@ const styles = StyleSheet.create({
     backgroundColor: Config.passiveThemeColor,
     paddingVertical: 5,
     paddingHorizontal: 7,
+    minWidth:32,
+    textAlign:"center",
     borderRadius: 90,
     fontSize: 16,
   },

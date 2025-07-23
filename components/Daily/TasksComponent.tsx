@@ -4,23 +4,16 @@ import { HabitQuantity } from "./HabitQuantity";
 import { HabitHourly } from "./HabitHourly";
 import { SecundaryDailyTabs } from "./SecundaryDailyTabs";
 
-export default function HabitsComponent() {
+export default function TasksComponent() {
   return (
     <View>
-      <SecundaryDailyTabs componentUsing="Habits"/>
+      <SecundaryDailyTabs componentUsing="Tasks"/>
 
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
       >
-        <HabitQuantity />
         <HabitHourly />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
-        <HabitQuantity />
         <HabitQuantity />
         <HabitQuantity />
         <HabitQuantity />
