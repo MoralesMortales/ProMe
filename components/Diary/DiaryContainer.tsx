@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     flexWrap:"wrap",
     justifyContent:"space-around",
-    rowGap:40
+    rowGap:46
         
     },
 });

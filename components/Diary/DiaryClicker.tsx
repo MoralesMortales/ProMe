@@ -6,8 +6,8 @@ export default function DiaryClicker() {
     <View style={styles.box}>
       
       <View style={styles.below}>
-      <Text>DiaryClicker</Text>
-      <Text>22 Pages</Text>
+      <Text style={styles.text}>DiaryClicker</Text>
+      <Text style={styles.page}>22 Pages</Text>
       </View>
 
     </View>
@@ -25,7 +25,18 @@ const styles = StyleSheet.create({
   below:{
     position: "absolute",
     bottom:-30,
-    flexDirection:"row"
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-between",
+    width:"100%"
+  },
+  page:{
+    fontSize:10,
+    textAlign:"right"
+  },
+  text:{
+    fontSize:15
   }
+
 });
 
