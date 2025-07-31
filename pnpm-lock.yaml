@@ -86,6 +86,9 @@ importers:
       react-native-screens:
         specifier: ~4.11.1
         version: 4.11.1(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
+      react-native-sqlite-storage:
+        specifier: ^6.0.1
+        version: 6.0.1(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0))
       react-native-web:
         specifier: ~0.20.0
         version: 0.20.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3622,6 +3625,11 @@ packages:
     peerDependencies:
       react: '*'
       react-native: '*'
+
+  react-native-sqlite-storage@6.0.1:
+    resolution: {integrity: sha512-1tDFjrint6X6qSYKf3gDyz+XB+X79jfiL6xTugKHPRtF0WvqMtVgdLuNqZunIXjNEvNtNVEbXaeZ6MsguFu00A==}
+    peerDependencies:
+      react-native: '>=0.14.0'
 
   react-native-web@0.20.0:
     resolution: {integrity: sha512-OOSgrw+aON6R3hRosCau/xVxdLzbjEcsLysYedka0ZON4ZZe6n9xgeN9ZkoejhARM36oTlUgHIQqxGutEJ9Wxg==}
@@ -8790,6 +8798,10 @@ snapshots:
       react-native: 0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0)
       react-native-is-edge-to-edge: 1.2.1(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       warn-once: 0.1.1
+
+  react-native-sqlite-storage@6.0.1(react-native@0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0)):
+    dependencies:
+      react-native: 0.79.5(@babel/core@7.28.0)(@react-native-community/cli@19.1.0(typescript@5.8.3))(@types/react@19.0.14)(react@19.0.0)
 
   react-native-web@0.20.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

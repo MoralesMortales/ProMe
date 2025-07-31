@@ -5,16 +5,14 @@ import {
   Image,
   StyleSheet,
   TouchableWithoutFeedback,
-  TouchableWithoutFeedbackBase,
   View,
 } from "react-native";
-import { Background } from "@react-navigation/elements";
+import { useAddButton } from "@/components/AddButtonProvider";
 
 const themeColor = "#000";
 const activeThemeColor = "#999";
-const dayTheme = false;
 
-const TabBarIcon = ({ focused, icon }: { focused: any; icon: any }) => (
+const TabBarIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
   <View style={styles.tabContainer}>
     <Image
       style={styles.tab}
@@ -24,32 +22,38 @@ const TabBarIcon = ({ focused, icon }: { focused: any; icon: any }) => (
   </View>
 );
 
-const _layout = () => {
+const TabLayout = () => {
+  const { triggerAddButton, currentTab } = useAddButton();
+
   return (
-    <Tabs
-      screenOptions={{
+       <Tabs
+      initialRouteName={currentTab}
+      screenOptions={({ route }) => ({
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: "transparent",
-          borderColor: "transparent",
-          shadowColor: "transparent",
-        },
-        tabBarButton: (props) => (
-          <TouchableWithoutFeedback {...props}>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
+        tabBarStyle: styles.tabBar,
+        tabBarButton: (props) => {
+          const isAddButton = route.name === 'Add';
+          
+          return (
+            <TouchableWithoutFeedback
+              {...props}
+              onPress={(e) => {
+                if (isAddButton) {
+                  e.preventDefault();
+                  triggerAddButton(currentTab);
+                } else {
+                  props.onPress?.(e);
+                }
               }}
             >
-              {props.children}
-            </View>
-          </TouchableWithoutFeedback>
-        ),
-      }}
-    >
-      <Tabs.Screen
+              <View style={styles.tabButton}>
+                {props.children}
+              </View>
+            </TouchableWithoutFeedback>
+          );
+        },
+      })}
+    >      <Tabs.Screen
         name="Calendar"
         options={{
           title: "Calendar",
@@ -59,6 +63,7 @@ const _layout = () => {
           ),
         }}
       />
+      
       <Tabs.Screen
         name="index"
         options={{
@@ -106,10 +111,17 @@ const _layout = () => {
   );
 };
 
-export default _layout;
-
 const styles = StyleSheet.create({
-  tab: {},
+  tabBar: {
+    backgroundColor: "transparent",
+    borderColor: "transparent",
+    shadowColor: "transparent",
+  },
+  tabButton: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   tabContainer: {
     display: "flex",
     flexDirection: "column",
@@ -117,9 +129,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     marginTop: 4,
-    marginBottom:19,
+    marginBottom: 19,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
+  tab: {
+    width: 24,
+    height: 24,
+  },
 });
+
+export default TabLayout;
