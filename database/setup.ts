@@ -1,20 +1,17 @@
 import * as SQLite from "expo-sqlite";
 
 export const connectToDatabase = async () => {
-  return SQLite.openDatabaseAsync('proMe.db');
+  return SQLite.openDatabaseAsync("proMe.db");
 };
 
 export const initDB = async (db: any) => {
-
-  const initTagsQuery = 
-            `CREATE TABLE IF NOT EXISTS Tags (
+  const initTagsQuery = `CREATE TABLE IF NOT EXISTS Tags (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               name TEXT,
               type TEXT
-            );`
+            );`;
 
-  const initHabitsQuery = 
-            `CREATE TABLE IF NOT EXISTS Habits (
+  const initHabitsQuery = `CREATE TABLE IF NOT EXISTS Habits (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               dayCreated DATE,
               name TEXT,
@@ -25,41 +22,51 @@ export const initDB = async (db: any) => {
               startHour DATE,
               endHour DATE,
               FOREIGN KEY (tagId) REFERENCES Tag(id)
-            );`
+            );`;
 
-  const initTasksQuery = 
-            `CREATE TABLE IF NOT EXISTS Tasks (
+  const initTasksQuery = `CREATE TABLE IF NOT EXISTS Tasks (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               dayCreated DATE,
               name TEXT,
               tagId INTEGER,
               FOREIGN KEY (tagId) REFERENCES Tag(id)
-            );`
+            );`;
 
-  const initMiniTaskQuery = 
-            `CREATE TABLE IF NOT EXISTS MiniTask (
+  const initMiniTaskQuery = `CREATE TABLE IF NOT EXISTS MiniTask (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               taskId INTEGER,
               name TEXT,
               FOREIGN KEY (taskId) REFERENCES Task(id)
-            );`
+            );`;
 
-  const initDiariesQuery = 
-            `CREATE TABLE IF NOT EXISTS Diaries (
+  const initDiariesQuery = `CREATE TABLE IF NOT EXISTS Diaries (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               dayCreated DATE,
               name TEXT,
               position INTEGER
-            );`
+            );`;
 
   try {
-    await db.execAsync(initTagsQuery)
-    await db.execAsync(initHabitsQuery)
-    await db.execAsync(initTasksQuery)
-    await db.execAsync(initMiniTaskQuery)
-    await db.execAsync(initDiariesQuery)
+    await db.execAsync(initTagsQuery);
+    await db.execAsync(initHabitsQuery);
+    await db.execAsync(initTasksQuery);
+    await db.execAsync(initMiniTaskQuery);
+    await db.execAsync(initDiariesQuery);
   } catch (error) {
-    console.error(error)
-    throw Error(`Failed to create tables`)
+    console.error(error);
+    throw Error(`Failed to create tables`);
   }
-}
+};
+
+export const T_testDB = async (code: string) => {
+  try {
+    const db = await connectToDatabase();
+
+    const res = await db.getAllAsync(code);
+    console.log(`It's ${res}`);
+    return res;
+  } catch (error) {
+    console.error(error);
+    throw Error(`Failed to create tables`);
+  }
+};
