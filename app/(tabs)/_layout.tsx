@@ -63,6 +63,17 @@ const TabLayout = () => {
           ),
         }}
       />
+      <Tabs.Screen
+        name="Details/DailyDetails" 
+        options={{
+          title: "Calendar",
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={icons.Calendar} />
+          ),
+        }}
+      />
+
       
       <Tabs.Screen
         name="index"

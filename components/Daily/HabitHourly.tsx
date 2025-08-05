@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { icons } from "@/constants/icons";
 import { Config } from "@/constants/config";
+import { router } from "expo-router";
 
 export const HabitHourly = () => {
+
   const [isHolding, setIsHolding] = useState(false);
   let [state, setState] = useState(false);
   let holdTimer = null;
@@ -20,13 +22,15 @@ export const HabitHourly = () => {
     setIsHolding(false);
     holdTimer = setTimeout(() => {
       setIsHolding(true);
-    }, 5000);
+    }, 2000);
   };
 
   const endHold = () => {
     clearTimeout(holdTimer);
     if (isHolding) {
       Alert.alert("¡Soltado después de 5 segundos!");
+      router.push('./DetailsComponent');
+
     }
     setIsHolding(false);
   };
@@ -104,7 +108,7 @@ const styles = StyleSheet.create({
   icons: {
     flexDirection: "row",
     width: "20%",
-    justifyContent:"center",
-    alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
