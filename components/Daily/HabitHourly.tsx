@@ -29,7 +29,7 @@ export const HabitHourly = () => {
     clearTimeout(holdTimer);
     if (isHolding) {
       Alert.alert("¡Soltado después de 5 segundos!");
-      router.push('./DetailsComponent');
+      router.push('./(non-tabs)/DailyDetails');
 
     }
     setIsHolding(false);

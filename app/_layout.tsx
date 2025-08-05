@@ -31,6 +31,7 @@ export default function RootLayout() {
     <AddButtonProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(non-tabs)" options={{ headerShown: false }} />
       </Stack>
     </AddButtonProvider>
   );
