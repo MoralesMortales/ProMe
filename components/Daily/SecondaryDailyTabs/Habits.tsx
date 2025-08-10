@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   secondaryTabText: {
-    color: Config.dark ? "#000" : "#eee",
+    color: Config.primaryTextColor,
     fontSize: 9,
   },
 });
