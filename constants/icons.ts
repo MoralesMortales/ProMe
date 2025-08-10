@@ -6,6 +6,7 @@ import Sun from "@/assets/icons/Sun.png";
 import User from "@/assets/icons/User.png";
 import Minus from "@/assets/icons/Minus.png";
 import Check from "@/assets/icons/Check.png";
+import Arrow from "@/assets/icons/Arrow.png";
 
 export const icons = {
   Book,
@@ -15,5 +16,6 @@ export const icons = {
   Settings,
   User,
   Minus,
-  Check
+  Check,
+  Arrow
 };
