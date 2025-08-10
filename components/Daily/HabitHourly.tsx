@@ -61,7 +61,7 @@ export const HabitHourly = () => {
             }}
             style={[!state && styles.notCheck]}
           >
-            <Image source={icons.Check} tintColor={Config.themeColor} />
+            <Image source={icons.Check} tintColor={Config.primaryColor} />
           </TouchableOpacity>
         </View>
       </Pressable>

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   secundaryTabsPlus: {
-    backgroundColor: Config.activeThemeColor,
+    backgroundColor: Config.secundaryColor,
     width: 30,
     justifyContent: "center",
     alignContent: "center",
@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    color: Config.dark ? "#eee" : "#000",
+    color: Config.primaryTextColor, 
     fontSize: 12,
   },
   secundaryTabs: {
-    backgroundColor: Config.activeThemeColor,
+    backgroundColor: Config.secundaryColor,
     paddingVertical: 2,
     width: 120,
     justifyContent: "center",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   selectedSecundaryTab: {
-    backgroundColor: Config.themeColor,
+    backgroundColor: Config.primaryColor,
   },
   scrollContent: {
     flexDirection: "row",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   secundaryTabText: {
-    color: Config.dark ? "#eee" : "#000",
+    color: Config.dark ? "#000" : "#eee",
     fontSize: 9,
   },
 });

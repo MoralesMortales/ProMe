@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     paddingBottom: 37,
   },
   mainTabs: {
-    backgroundColor: Config.activeThemeColor,
+    backgroundColor: Config.primaryColor,
     paddingVertical: 2,
     width: "45%",
     justifyContent: "center",
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 90,
   },
   selectedMainTab: {
-    backgroundColor: Config.themeColor,
+    backgroundColor: Config.primaryColor,
   },
   mainTabText: {
     color: Config.dark ? "#eee" : "#000",

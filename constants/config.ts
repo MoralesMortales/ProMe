@@ -1,6 +1,7 @@
 export const Config = {
-  themeColor: "#555",
-  activeThemeColor: "#888",
-  passiveThemeColor: "#aaa",
-  dark: true,
+  primaryColor: "#555",
+  primaryTextColor:"#fff",
+  secundaryColor: "#888",
+  secundaryColor_2: "#aaa",
+
 };

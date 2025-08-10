@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { icons } from "@/constants/icons";
+import { Config } from "@/constants/config";
 
 export default function DetailsComponent() {
   return (
@@ -12,7 +13,7 @@ export default function DetailsComponent() {
 
       <View style={styles.titleSection}>
         <View style={styles.logo}></View>
-        <Text style={styles.container_base_text}>Cocinar</Text>
+        <Text style={styles.logo_text}>Cocinar</Text>
       </View>
 
       <View style={[styles.container_3, styles.container_base]}>
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    backgroundColor: "#424",
     height:75,
     flexDirection:"row",
     alignItems:"center",
@@ -52,18 +52,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#624",
   },
   container_base_text: {
-    color: "#fff",
+    color: Config.dark ? "#fff" : "#000" ,
     textOverflow: "Ellipsis",
   },
   text_header:{
   textTransform:"uppercase",
-    color:"#fff",
-    fontSize:20
+    color:"#222",
+    fontSize:30
   },
   logo:{
-    backgroundColor:"#fff",
+    backgroundColor:"#222",
     height:"100%",
     width:40,
     borderRadius:90
+  },
+  logo_text:{
+    fontSize:18
   }
 });
