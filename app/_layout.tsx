@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { connectToDatabase, initDB, T_testDB } from "@/database/setup";
 import { useEffect } from "react";
 import { T_getTables } from "@/database/actions";
+import { StyleSheet } from "react-native";
 
 export default function RootLayout() {
   useEffect(() => {
@@ -36,3 +37,6 @@ export default function RootLayout() {
     </AddButtonProvider>
   );
 }
+
+
+
