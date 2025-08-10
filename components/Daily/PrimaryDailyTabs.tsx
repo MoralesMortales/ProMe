@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   mainTabs: {
-    backgroundColor: Config.secundaryColor,
+    backgroundColor: Config.secondaryColor,
     paddingVertical: 2,
     width: "45%",
     justifyContent: "center",

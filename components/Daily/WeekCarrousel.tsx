@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 90,
   },
   selectedDay: {
-    backgroundColor: Config.secundaryColor,
+    backgroundColor: Config.secondaryColor,
     maxWidth:"80%",
     marginHorizontal:"auto",
     borderRadius:10,
@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   dayDate: {
-    color: Config.primaryTextColor,
-    backgroundColor: Config.secundaryColor_2,
+    color: "#333",
+    backgroundColor: Config.secondaryColor_2,
     paddingVertical: 5,
     paddingHorizontal: 7,
     minWidth:32,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   todayIndicator: {
     outlineWidth: 1.1,
     outlineOffset:-1,
-    outlineColor: Config.secundaryColor_2,
+    outlineColor: Config.secondaryColor_2,
     maxWidth:"80%",
     marginHorizontal:"auto",
     borderRadius:10,

@@ -15,7 +15,7 @@ const TabBarIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
     <Image
       style={styles.tab}
       source={icon}
-      tintColor={focused ? Config.primaryColor : Config.secundaryColor_2}
+      tintColor={focused ? Config.primaryColor : Config.secondaryColor_2}
     />
   </View>
 );
