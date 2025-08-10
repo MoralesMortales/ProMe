@@ -69,13 +69,13 @@ const setQuantityFnt = (type) => {
             }}
             style={quantity === 0 && styles.notAvailableBtn}
           >
-            <Image source={icons.Minus} tintColor={Config.themeColor} />
+            <Image source={icons.Minus} tintColor={Config.primaryColor} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {
               setQuantityFnt("+");
             }}
 >
-            <Image source={icons.Plus} tintColor={Config.themeColor} />
+            <Image source={icons.Plus} tintColor={Config.primaryColor} />
           </TouchableOpacity>
         </View>
       </Pressable>

@@ -7,6 +7,7 @@ import WeekCarrousel from "@/components/Daily/WeekCarrousel";
 import PrimaryDailyTabs from "@/components/Daily/PrimaryDailyTabs";
 import HabitsComponent from "@/components/Daily/HabitsComponent";
 import TasksComponent from "@/components/Daily/TasksComponent";
+import { DarkTheme } from "@react-navigation/native";
 
 export default function Index() {
   const [selectedMainTab, setSelectedMainTab] = useState<"Habits" | "Tasks">(
@@ -23,7 +24,7 @@ export default function Index() {
   }
 
   return (
-    <View>
+    <View style={styles.themeConfig}>
       <StatusBar />
 
       <Text style={styles.title}>My Tasks</Text>
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     paddingBottom: 37,
   },
   mainTabs: {
-    backgroundColor: Config.activeThemeColor,
+    backgroundColor: Config.primaryColor,
     paddingVertical: 2,
     width: "45%",
     justifyContent: "center",
@@ -67,9 +68,12 @@ const styles = StyleSheet.create({
     borderRadius: 90,
   },
   selectedMainTab: {
-    backgroundColor: Config.themeColor,
+    backgroundColor: Config.primaryColor,
   },
   mainTabText: {
-    color: Config.dark ? "#eee" : "#000",
+    color: Config.primaryTextColor
   },
+  themeConfig:{
+    backgroundColor: Config.darkMode ? "#4c4c4c" : "#eee",
+  }
 });

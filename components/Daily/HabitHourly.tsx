@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Alert,
   Image,
   Pressable,
   StyleSheet,
@@ -28,7 +27,6 @@ export const HabitHourly = () => {
   const endHold = () => {
     clearTimeout(holdTimer);
     if (isHolding) {
-      Alert.alert("¡Soltado después de 5 segundos!");
       router.push('./(non-tabs)/DailyDetails');
 
     }
@@ -63,7 +61,7 @@ export const HabitHourly = () => {
             }}
             style={[!state && styles.notCheck]}
           >
-            <Image source={icons.Check} tintColor={Config.themeColor} />
+            <Image source={icons.Check} tintColor={Config.primaryColor} />
           </TouchableOpacity>
         </View>
       </Pressable>

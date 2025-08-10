@@ -10,22 +10,22 @@ import {
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type SecundaryTabType = string;
+type secondaryTabType = string;
 
-export const SecundaryDailyTabsTasks = () => {
-  const [taskTabs, setTabs] = useState<SecundaryTabType[]>(["All"]);
-  const [selectedSecundaryTaskTab, setSecundaryTab] = useState<SecundaryTabType>("All");
+export const SecondaryDailyTabsTasks = () => {
+  const [taskTabs, setTabs] = useState<secondaryTabType[]>(["All"]);
+  const [selectedsecondaryTaskTab, setsecondaryTab] = useState<secondaryTabType>("All");
   const [newTaskTabCount, setNewTabCount] = useState(1);
 
  useEffect(() => {
     const loadTabs = async () => {
       try {
         const savedTabs = await AsyncStorage.getItem('@taskTabs');
-        const savedSelectedTab = await AsyncStorage.getItem('@selectedSecundaryTaskTab');
+        const savedSelectedTab = await AsyncStorage.getItem('@selectedsecondaryTaskTab');
         const savedTabCount = await AsyncStorage.getItem('@newTaskTabCount');
 
         if (savedTabs) setTabs(JSON.parse(savedTabs));
-        if (savedSelectedTab) setSecundaryTab(savedSelectedTab);
+        if (savedSelectedTab) setsecondaryTab(savedSelectedTab);
         if (savedTabCount) setNewTabCount(parseInt(savedTabCount, 10));
       } catch (e) {
         console.error('Error al cargar las pestañas:', e);
@@ -39,7 +39,7 @@ useEffect(() => {
     const saveTabs = async () => {
       try {
         await AsyncStorage.setItem('@taskTabs', JSON.stringify(taskTabs));
-        await AsyncStorage.setItem('@selectedSecundaryTaskTab', selectedSecundaryTaskTab);
+        await AsyncStorage.setItem('@selectedsecondaryTaskTab', selectedsecondaryTaskTab);
         await AsyncStorage.setItem('@newTaskTabCount', newTaskTabCount.toString());
       } catch (e) {
         console.error('Error al guardar las pestañas:', e);
@@ -47,7 +47,7 @@ useEffect(() => {
     };
 
     saveTabs();
-  }, [taskTabs, selectedSecundaryTaskTab, newTaskTabCount]);
+  }, [taskTabs, selectedsecondaryTaskTab, newTaskTabCount]);
 
 
   const addNewTab = () => {
@@ -55,11 +55,11 @@ useEffect(() => {
     const updatedTabs = [...taskTabs, newTabName];
     setTabs(updatedTabs);
     setNewTabCount(newTaskTabCount + 1);
-    setSecundaryTab(newTabName);
+    setsecondaryTab(newTabName);
   };
 
   return (
-    <View style={styles.secundaryTabsContainer}>
+    <View style={styles.secondaryTabsContainer}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -69,50 +69,50 @@ useEffect(() => {
           <TouchableOpacity
             key={tab}
             style={[
-              styles.secundaryTabs,
-              selectedSecundaryTaskTab === tab && styles.selectedSecundaryTab,
+              styles.secondaryTabs,
+              selectedsecondaryTaskTab === tab && styles.selectedsecondaryTab,
             ]}
-            onPress={() => setSecundaryTab(tab)}
+            onPress={() => setsecondaryTab(tab)}
           >
-            <Text style={styles.secundaryTabText}>{tab}</Text>
+            <Text style={styles.secondaryTabText}>{tab}</Text>
           </TouchableOpacity>
         ))}
 
         <TouchableOpacity
           style={[
-            styles.secundaryTabsPlus,
-            selectedSecundaryTaskTab === "+" && styles.selectedSecundaryTab,
+            styles.secondaryTabsPlus,
+            selectedsecondaryTaskTab === "+" && styles.selectedsecondaryTab,
           ]}
           onPress={addNewTab}
         >
-          <Text style={styles.secundaryTabTextPlus}>+</Text>
+          <Text style={styles.secondaryTabTextPlus}>+</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  secundaryTabsContainer: {
+  secondaryTabsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
   },
-  secundaryTabsPlus: {
-    backgroundColor: Config.activeThemeColor,
+  secondaryTabsPlus: {
+    backgroundColor: Config.secondaryColor,
     width: 30,
     justifyContent: "center",
     alignContent: "center",
     borderRadius: 90,
   },
-  secundaryTabTextPlus: {
+  secondaryTabTextPlus: {
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    color: Config.dark ? "#eee" : "#000",
+    color: Config.primaryTextColor,
     fontSize: 12,
   },
-  secundaryTabs: {
-    backgroundColor: Config.activeThemeColor,
+  secondaryTabs: {
+    backgroundColor: Config.secondaryColor,
     paddingVertical: 2,
     width: 120,
     justifyContent: "center",
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     borderRadius: 90,
     marginRight: 15,
   },
-  selectedSecundaryTab: {
-    backgroundColor: Config.themeColor,
+  selectedsecondaryTab: {
+    backgroundColor: Config.primaryColor,
   },
   scrollContent: {
     flexDirection: "row",
@@ -129,8 +129,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     gap: 10,
   },
-  secundaryTabText: {
-    color: Config.dark ? "#eee" : "#000",
+  secondaryTabText: {
+    color: Config.primaryTextColor,
     fontSize: 9,
   },
 });

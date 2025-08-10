@@ -9,23 +9,23 @@ import {
   View,
 } from "react-native";
 
-type SecundaryTabType = string;
+type secondaryTabType = string;
 
-export const SecundaryDailyTabsHabits = () => {
-  const [tabs, setTabs] = useState<SecundaryTabType[]>(["All"]);
-  const [selectedSecundaryTab, setSecundaryTab] =
-    useState<SecundaryTabType>("All");
+export const SecondaryDailyTabsHabits = () => {
+  const [tabs, setTabs] = useState<secondaryTabType[]>(["All"]);
+  const [selectedsecondaryTab, setsecondaryTab] =
+    useState<secondaryTabType>("All");
   const [newTabCount, setNewTabCount] = useState(1);
 
   const addNewTab = () => {
     const newTabName = `NewTab${newTabCount}`;
     setTabs([...tabs, newTabName]);
     setNewTabCount(newTabCount + 1);
-    setSecundaryTab(newTabName);
+    setsecondaryTab(newTabName);
   };
 
   return (
-    <View style={styles.secundaryTabsContainer}>
+    <View style={styles.secondaryTabsContainer}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -35,50 +35,50 @@ export const SecundaryDailyTabsHabits = () => {
           <TouchableOpacity
             key={tab}
             style={[
-              styles.secundaryTabs,
-              selectedSecundaryTab === tab && styles.selectedSecundaryTab,
+              styles.secondaryTabs,
+              selectedsecondaryTab === tab && styles.selectedsecondaryTab,
             ]}
-            onPress={() => setSecundaryTab(tab)}
+            onPress={() => setsecondaryTab(tab)}
           >
-            <Text style={styles.secundaryTabText}>{tab}</Text>
+            <Text style={styles.secondaryTabText}>{tab}</Text>
           </TouchableOpacity>
         ))}
 
         <TouchableOpacity
           style={[
-            styles.secundaryTabsPlus,
-            selectedSecundaryTab === "+" && styles.selectedSecundaryTab,
+            styles.secondaryTabsPlus,
+            selectedsecondaryTab === "+" && styles.selectedsecondaryTab,
           ]}
           onPress={addNewTab}
         >
-          <Text style={styles.secundaryTabTextPlus}>+</Text>
+          <Text style={styles.secondaryTabTextPlus}>+</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  secundaryTabsContainer: {
+  secondaryTabsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
   },
-  secundaryTabsPlus: {
-    backgroundColor: Config.activeThemeColor,
+  secondaryTabsPlus: {
+    backgroundColor: Config.secondaryColor,
     width: 30,
     justifyContent: "center",
     alignContent: "center",
     borderRadius: 90,
   },
-  secundaryTabTextPlus: {
+  secondaryTabTextPlus: {
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    color: Config.dark ? "#eee" : "#000",
+    color: Config.primaryTextColor, 
     fontSize: 12,
   },
-  secundaryTabs: {
-    backgroundColor: Config.activeThemeColor,
+  secondaryTabs: {
+    backgroundColor: Config.secondaryColor,
     paddingVertical: 2,
     width: 120,
     justifyContent: "center",
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     borderRadius: 90,
     marginRight: 15,
   },
-  selectedSecundaryTab: {
-    backgroundColor: Config.themeColor,
+  selectedsecondaryTab: {
+    backgroundColor: Config.primaryColor,
   },
   scrollContent: {
     flexDirection: "row",
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     gap: 10,
   },
-  secundaryTabText: {
-    color: Config.dark ? "#eee" : "#000",
+  secondaryTabText: {
+    color: Config.primaryTextColor,
     fontSize: 9,
   },
 });

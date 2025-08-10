@@ -8,16 +8,14 @@ import {
   View,
 } from "react-native";
 import { useAddButton } from "@/components/AddButtonProvider";
-
-const themeColor = "#000";
-const activeThemeColor = "#999";
+import { Config } from "@/constants/config";
 
 const TabBarIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
   <View style={styles.tabContainer}>
     <Image
       style={styles.tab}
       source={icon}
-      tintColor={focused ? themeColor : activeThemeColor}
+      tintColor={focused ? Config.primaryColor : Config.secondaryColor_2}
     />
   </View>
 );

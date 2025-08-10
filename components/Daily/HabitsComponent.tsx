@@ -2,12 +2,12 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { HabitQuantity } from "./HabitQuantity";
 import { HabitHourly } from "./HabitHourly";
-import { SecundaryDailyTabs } from "./SecundaryDailyTabs";
+import { SecondaryDailyTabs } from "./SecondaryDailyTabs";
 
 export default function HabitsComponent() {
   return (
     <View>
-      <SecundaryDailyTabs componentUsing="Habits"/>
+      <SecondaryDailyTabs componentUsing="Habits"/>
 
       <ScrollView
         style={styles.scrollView}
