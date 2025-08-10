@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Alert,
   Image,
   Pressable,
   StyleSheet,
@@ -28,7 +27,6 @@ export const HabitHourly = () => {
   const endHold = () => {
     clearTimeout(holdTimer);
     if (isHolding) {
-      Alert.alert("¡Soltado después de 5 segundos!");
       router.push('./(non-tabs)/DailyDetails');
 
     }
