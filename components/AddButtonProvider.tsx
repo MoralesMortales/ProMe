@@ -31,5 +31,7 @@ const [activate, setActivate] = useState(false);
 export const useAddButton = () => {
   const context = useContext(AddButtonContext);
   if (!context) throw new Error('useAddButton must be used within AddButtonProvider');
+console.log("jejeje");
+
   return context;
 };
