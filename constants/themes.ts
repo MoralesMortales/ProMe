@@ -5,6 +5,9 @@ export interface ThemeType {
   secondaryColor_2: string;
 }
 
+// color: Config.darkMode ? "#eee" : "#000",
+// backgroundColor: Config.darkMode ? "#4c4c4c" : "#eee",
+
 export const Theme: Record<string, ThemeType> = {
   night_light: {
     primaryColor: "#555",

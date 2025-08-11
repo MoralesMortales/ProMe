@@ -5,6 +5,8 @@ interface ConfigType {
   currentTheme: string;
   themeConfig: ThemeType;
   primaryColor: string;
+  secondaryColor: string;
+  secondaryColor_2: string;
 }
 
 export const Config = {
