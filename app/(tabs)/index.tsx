@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
  
   themeConfig: {
     backgroundColor: Config.darkMode ? "#4c4c4c" : "#eee",
+    flexGrow:1,
   },
 });

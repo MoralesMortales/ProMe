@@ -21,7 +21,6 @@ export default function DetailsComponent() {
         <Text style={styles.base_text}>
           Description Description Description Description Description
           Description Description Description Description Description
-          Description Description Description Description Description
           Description Description Description Description
         </Text>
       </View>
