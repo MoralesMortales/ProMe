@@ -7,7 +7,6 @@ import WeekCarrousel from "@/components/Daily/WeekCarrousel";
 import PrimaryDailyTabs from "@/components/Daily/PrimaryDailyTabs";
 import HabitsComponent from "@/components/Daily/HabitsComponent";
 import TasksComponent from "@/components/Daily/TasksComponent";
-import { DarkTheme } from "@react-navigation/native";
 
 export default function Index() {
   const [selectedMainTab, setSelectedMainTab] = useState<"Habits" | "Tasks">(
@@ -17,8 +16,7 @@ export default function Index() {
   function showSelectedTab() {
     if (selectedMainTab === "Habits") {
       return <HabitsComponent />;
-    } 
-    else if (selectedMainTab === "Tasks") {
+    } else if (selectedMainTab === "Tasks") {
       return <TasksComponent />;
     }
   }
@@ -47,33 +45,12 @@ const styles = StyleSheet.create({
     marginLeft: 7,
     fontSize: 25,
     marginBottom: 20,
+    color: Config.darkMode ? "#eee" : "#000",
   },
-  mainTabsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 20,
-  },
-  scrollView: {
-    height: "60%",
-  },
-  scrollContent: {
-    paddingBottom: 37,
-  },
-  mainTabs: {
-    backgroundColor: Config.primaryColor,
-    paddingVertical: 2,
-    width: "45%",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 90,
-  },
-  selectedMainTab: {
-    backgroundColor: Config.primaryColor,
-  },
-  mainTabText: {
-    color: Config.primaryTextColor
-  },
-  themeConfig:{
+
+ 
+  themeConfig: {
     backgroundColor: Config.darkMode ? "#4c4c4c" : "#eee",
-  }
+    flexGrow:1,
+  },
 });

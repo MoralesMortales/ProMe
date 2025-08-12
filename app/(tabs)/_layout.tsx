@@ -15,6 +15,8 @@ const TabBarIcon = ({ focused, icon }: { focused: boolean; icon: any }) => (
     <Image
       style={styles.tab}
       source={icon}
+      
+
       tintColor={focused ? Config.primaryColor : Config.secondaryColor_2}
     />
   </View>
@@ -110,10 +112,13 @@ const TabLayout = () => {
 };
 
 const styles = StyleSheet.create({
+
+
   tabBar: {
-    backgroundColor: "transparent",
     borderColor: "transparent",
     shadowColor: "transparent",
+    backgroundColor: Config.darkMode ? "#4c4c4c" : "#eee",
+
   },
   tabButton: {
     flex: 1,

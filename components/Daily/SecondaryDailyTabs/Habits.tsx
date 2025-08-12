@@ -1,4 +1,3 @@
-
 import { Config } from "@/constants/config";
 import { useState } from "react";
 import {
@@ -62,6 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20,
+    paddingBottom: 10,
   },
   secondaryTabsPlus: {
     backgroundColor: Config.secondaryColor,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    color: Config.primaryTextColor, 
+    color: Config.primaryTextColor,
     fontSize: 12,
   },
   secondaryTabs: {

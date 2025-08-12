@@ -27,6 +27,10 @@ export default function HabitsComponent() {
         <HabitQuantity />
         <HabitQuantity />
         <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
+        <HabitQuantity />
       </ScrollView>
     </View>
   );
@@ -35,7 +39,6 @@ export default function HabitsComponent() {
 const styles = StyleSheet.create({
   container: {},
   scrollView: {
-    height: "60%",
   },
   scrollContent: {
     paddingBottom: 37,

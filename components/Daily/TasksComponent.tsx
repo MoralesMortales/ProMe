@@ -28,7 +28,6 @@ export default function TasksComponent() {
 const styles = StyleSheet.create({
   container: {},
   scrollView: {
-    height: "60%",
   },
   scrollContent: {
     paddingBottom: 37,

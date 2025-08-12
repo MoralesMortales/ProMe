@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    color: "#000",
+    color: Config.darkMode ? "#eee" : "#000",
     width: "45%",
     textOverflow: "Ellipsis",
   },
   complement: {
     width: "20%",
     fontSize: 13,
-    color: "#000",
+    color: Config.darkMode ? "#eee" : "#000",
     textAlign: "center",
   },
   icons: {

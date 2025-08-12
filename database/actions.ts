@@ -1,28 +1,43 @@
+import { connectToDatabase } from "./setup";
+
 export const T_getTables = () => {
   return `SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';`;
 };
 
-// // Insert a Tag
-// export const addTag = (name, type) => {
-//   db.transaction(tx => {
-//     tx.executeSql(
-//       'INSERT INTO Tag (name, type) VALUES (?, ?)',
-//       [name, type],
-//       () => console.log("Tag added"),
-//       (_, error) => console.error("Error adding tag", error)
-//     );
-//   });
-// };
+export const T_addTag = async (name: string, type: string = "General") => {
+  const db = await connectToDatabase();
 
-// // Get all Habits with their Tags (JOIN query)
-// export const getHabits = (callback) => {
-//   db.transaction(tx => {
-//     tx.executeSql(
-//       `SELECT Habit.*, Tag.name as tagName
-//        FROM Habit LEFT JOIN Tag ON Habit.tagId = Tag.id`,
-//       [],
-//       (_, { rows }) => callback(rows._array),
-//       (_, error) => console.error("Error fetching habits", error)
-//     );
-//   });
-// };
+  try {
+    // Validación básica
+    if (!name.trim()) {
+      throw new Error("El nombre del tag no puede estar vacío");
+    }
+
+    // Verificar si el tag ya existe
+    const existingTags = await db.getAllAsync(
+      `SELECT * FROM Tags WHERE name = ?;`,
+      [name]
+    );
+
+    if (existingTags.length > 0) {
+      throw new Error(`El tag "${name}" ya existe`);
+    }
+
+    // Insertar el nuevo tag
+    const result = await db.runAsync(
+      `INSERT INTO Tags (name, type) VALUES (?, ?);`,
+      [name, type]
+    );
+
+    console.log(`Tag añadido ID: ${result.lastInsertRowId}`);
+    return result;
+  } catch (error) {
+    console.error("Error en T_addTag:", error.message);
+    throw error; // Re-lanzamos el error para manejo externo
+  }
+};
+
+export const T_getAllTags = async () => {
+  const db = await connectToDatabase();
+  return await db.getAllAsync("SELECT * FROM Tags ORDER BY name;");
+};

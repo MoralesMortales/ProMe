@@ -7,6 +7,7 @@ import User from "@/assets/icons/User.png";
 import Minus from "@/assets/icons/Minus.png";
 import Check from "@/assets/icons/Check.png";
 import Arrow from "@/assets/icons/Arrow.png";
+import DropArrow from "@/assets/icons/DropArrow.png";
 
 export const icons = {
   Book,
@@ -17,5 +18,6 @@ export const icons = {
   User,
   Minus,
   Check,
-  Arrow
+  Arrow,
+  DropArrow,
 };
