@@ -2,7 +2,8 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { icons } from "@/constants/icons";
 import { Config } from "@/constants/config";
-import ChooseList from "@/components/Daily/Details/Habits/ChooseList";
+import AssignTagDaily from "@/components/Daily/Details/Habits/AssignTagDaily";
+import AssignTypeDaily from "@/components/Daily/Details/Habits/AssignTypeDaily";
 
 export default function DetailsComponent() {
   return (
@@ -28,7 +29,11 @@ export default function DetailsComponent() {
 
       <View style={styles.hr}></View>
 
-      <ChooseList/>
+      <AssignTagDaily/>
+      <AssignTypeDaily/>
+
+            <View style={styles.hr}></View>
+
     </View>
   );
 }
